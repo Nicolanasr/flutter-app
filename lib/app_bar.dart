@@ -82,26 +82,30 @@ class DataSearch extends SearchDelegate<String> {
   ];
 
   @override
-  List<Widget>? buildActions(BuildContext context) {
+  List<Widget> buildActions(BuildContext context) {
     return [
-      IconButton(
-          onPressed: () {
-            query = "";
-          },
-          icon: const Icon(Icons.clear_rounded))
+      SafeArea(
+        child: IconButton(
+            onPressed: () {
+              query = "";
+            },
+            icon: const Icon(Icons.clear_rounded)),
+      )
     ];
   }
 
   @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_arrow,
-        progress: transitionAnimation,
+  Widget buildLeading(BuildContext context) {
+    return SafeArea(
+      child: IconButton(
+        icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow,
+          progress: transitionAnimation,
+        ),
+        onPressed: () {
+          close(context, "");
+        },
       ),
-      onPressed: () {
-        close(context, "");
-      },
     );
   }
 

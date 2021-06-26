@@ -63,6 +63,12 @@ flutter:
   assets:
     - asset/mobile_logo.png
     - asset/slider-img-1.png
+    - asset/1-slider-img-3.png
+    - asset/Beauty-banner.jpeg
+    - asset/phones-banner.jpeg
+    - asset/Smart-wifi-fridge-preview.jpeg
+    - asset/roku-tv-preview.jpeg
+    - asset/bath-tubs-banner.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
