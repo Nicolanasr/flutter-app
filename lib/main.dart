@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:snapping_page_scroll/snapping_page_scroll.dart';
 
 import './page1.dart';
 import './page2.dart';

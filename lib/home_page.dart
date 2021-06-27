@@ -116,6 +116,59 @@ class CategoryColumnScroll extends StatelessWidget {
   }
 }
 
+class CategoryFade extends StatelessWidget {
+  String categoryName, image;
+  CategoryFade(this.categoryName, this.image);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, '/show_category', arguments: categoryName);
+      },
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Image.asset(image),
+      ),
+    );
+  }
+}
+
+class TitlePreview extends StatelessWidget {
+  String title;
+  double fontSize;
+
+  TitlePreview(this.title, this.fontSize);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.w600,
+                shadows: [Shadow(color: Colors.black, offset: Offset(0, -7))],
+                color: Colors.transparent,
+                decoration: TextDecoration.underline,
+                decorationColor: Colors.indigo[700],
+                decorationThickness: 1.4,
+                decorationStyle: TextDecorationStyle.solid,
+              ),
+            ),
+            const Divider(
+              height: 5,
+            ),
+          ]),
+    );
+  }
+}
+
 class ProductPreview extends StatelessWidget {
   String title, category, imageURI;
   double price;
@@ -180,35 +233,93 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _currentPage = 0;
-  PageController _pageController = PageController(
+  final PageController _pageController = PageController(
     initialPage: 0,
   );
-  int _counterFade = 0;
+
+  int _widgetId = 1;
+
+  Widget _renderWidget1() {
+    return CategoryFade('Beauty', './asset/Beauty-banner.jpeg');
+  }
+
+  Widget _renderWidget2() {
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, '/show_category', arguments: 'Phones');
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Image.asset('./asset/phones-banner.jpeg'),
+      ),
+    );
+    // CategoryFade('Phones', './asset/phones-banner.jpeg');
+  }
+
+  Widget _renderWidget3() {
+    return CategoryFade('Bath tubs', './asset/bath-tubs-banner.jpeg');
+  }
+
+  Widget _renderWidget4() {
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, '/show_category', arguments: 'Olive Oil');
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Image.asset('./asset/oliveOil-banner.jpeg'),
+      ),
+    );
+  }
+
+  Widget _renderWidget() {
+    if (_widgetId == 1) {
+      return _renderWidget1();
+    } else if (_widgetId == 2) {
+      return _renderWidget2();
+    } else if (_widgetId == 3) {
+      return _renderWidget3();
+    } else {
+      return _renderWidget4();
+    }
+  }
+
+  void _updateWidget() {
+    if (_widgetId == 1) {
+      _widgetId = 2;
+    } else if (_widgetId == 2) {
+      _widgetId = 3;
+    } else if (_widgetId == 3) {
+      _widgetId = 4;
+    } else if (_widgetId == 4) {
+      _widgetId = 1;
+    }
+  }
 
   @override
   void initState() {
     super.initState();
 
-    Timer.periodic(Duration(seconds: 5), (Timer timer) {
+    Timer.periodic(const Duration(seconds: 5), (Timer timer) {
       if (_currentPage < 1) {
         _currentPage++;
       } else {
         _currentPage = 0;
       }
 
-      setState(() {
-        if (_counterFade < 3) {
-          _counterFade++;
-        } else {
-          _counterFade = 0;
-        }
-      });
-
       _pageController.animateToPage(
         _currentPage,
-        duration: Duration(milliseconds: 350),
+        duration: const Duration(milliseconds: 350),
         curve: Curves.decelerate,
       );
+    });
+    Timer.periodic(const Duration(seconds: 5), (Timer timer) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _updateWidget();
+      });
     });
   }
 
@@ -219,7 +330,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return SingleChildScrollView(
       child: Container(
         color: Colors.white,
-        padding: EdgeInsets.all(1),
+        padding: const EdgeInsets.all(1),
         child: Column(children: [
           Container(
             height: 180,
@@ -260,47 +371,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ],
             ),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, '/show_category',
-                  arguments: 'Beauty');
-            },
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: Image.asset('./asset/Beauty-banner.jpeg'),
-            ),
+          AnimatedSwitcher(
+            duration: const Duration(seconds: 3),
+            child: _renderWidget(),
           ),
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(context, '/show_category',
-                  arguments: 'Phones');
-            },
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
-              child: Image.asset('./asset/phones-banner.jpeg'),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.fromLTRB(20, 10, 20, 20),
-            child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Text(
-                "Featured product",
-                style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w600,
-                  shadows: [Shadow(color: Colors.black, offset: Offset(0, -7))],
-                  color: Colors.transparent,
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.indigo[700],
-                  decorationThickness: 1.4,
-                  decorationStyle: TextDecorationStyle.solid,
-                ),
-              ),
-            ]),
-          ),
+          TitlePreview('Featured product', 23),
           Container(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-            height: 260,
+            height: 250,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -351,113 +429,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ],
             ),
           ),
-          Container(
-              height: 100,
-              width: 100,
-              child: PageView.builder(
-                itemCount: 1,
-                itemBuilder: (context, position) {
-                  if (_counterFade == 0) {
-                    return FadeTransition(
-                      opacity: animation,
-                      // The green box must be a child of the FadeTransition widget.
-                      child: Container(
-                        width: 200.0,
-                        height: 200.0,
-                        color: Colors.green,
-                      ),
-                    );
-                  } else if (_counterFade == 1) {
-                    return FadeTransition(
-                      opacity: animation,
-                      // The green box must be a child of the FadeTransition widget.
-                      child: Container(
-                        width: 200.0,
-                        height: 200.0,
-                        color: Colors.red,
-                      ),
-                    );
-                  } else {
-                    return FadeTransition(
-                      opacity: animation,
-                      // The green box must be a child of the AnimatedOpacity widget.
-                      child: Container(
-                        width: 200.0,
-                        height: 200.0,
-                        color: Colors.lightBlue,
-                      ),
-                    );
-                  }
-                },
-              ))
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: GestureDetector(
+              child: Image.asset('./asset/home-appliance-kitches-banner.png'),
+              onTap: () {
+                Navigator.pushNamed(context, '/show_category',
+                    arguments: 'Home appliances');
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          TitlePreview('Mobile Phones, Tablets & Asccessories', 18),
         ]),
       ),
     );
-
-    // Column(
-    //   children: [
-    //     SizedBox(
-    //       height: 100,
-    //       child: PageView(
-    //         controller: _controller,
-    //         children: [
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: SizedBox(
-    //               child: Container(
-    //                 color: Colors.amber,
-    //               ),
-    //             ),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: SizedBox(
-    //               width: 200,
-    //               child: Container(
-    //                 color: Colors.red,
-    //               ),
-    //             ),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: SizedBox(
-    //               width: 200,
-    //               child: Container(
-    //                 color: Colors.lightBlue,
-    //               ),
-    //             ),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: SizedBox(
-    //               width: 200,
-    //               child: Container(
-    //                 color: Colors.lightBlue,
-    //               ),
-    //             ),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: SizedBox(
-    //               width: 200,
-    //               child: Container(
-    //                 color: Colors.lightBlue,
-    //               ),
-    //             ),
-    //           ),
-    //           Padding(
-    //             padding: const EdgeInsets.all(8.0),
-    //             child: SizedBox(
-    //               width: 200,
-    //               child: Container(
-    //                 color: Colors.lightBlue,
-    //               ),
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 }

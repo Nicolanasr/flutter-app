@@ -129,7 +129,7 @@ class _ByCategoryTabState extends State<ByCategoryTab> {
     var subCatList = categories[i].subCat;
     return ExpansionTile(
         collapsedIconColor: Colors.grey,
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.black87,
         childrenPadding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
         title: Row(
           children: [
@@ -167,8 +167,8 @@ class _ByCategoryTabState extends State<ByCategoryTab> {
                           arguments: subCatBody);
                     },
                     title: Text(subCatBody,
-                        style: const TextStyle(
-                            color: Colors.white70, fontSize: 16)),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 16)),
                   )
               ],
             ),
