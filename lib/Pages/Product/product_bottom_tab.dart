@@ -54,18 +54,17 @@ class _ProductTabState extends State<ProductTab> with TickerProviderStateMixin {
           tabs: tabList),
       SizedBox(
         height: 100.0,
-        // ignore: prefer_const_literals_to_create_immutables
-        child: TabBarView(controller: _tabController, children: [
-          const Tab(
+        child: TabBarView(controller: _tabController, children: const [
+          Tab(
             child: ShippingTab(),
           ),
-          const Tab(
+          Tab(
             child: ReviewsTab(),
           ),
-          const Tab(
+          Tab(
             child: VenderInfoTab(),
           ),
-          const Tab(
+          Tab(
             child: MoreProductsTab(),
           )
         ]),
