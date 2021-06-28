@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_test/Pages/Product/product_page.dart';
 
-import './page1.dart';
-import './page2.dart';
 import './sidebar.dart';
-import './user_profile.dart';
-import './show_by_category.dart';
+import 'package:navigation_test/Pages/By Category/show_by_category.dart';
 import './app_bar.dart';
-import './by_category.dart';
-import './home_page.dart';
+import 'package:navigation_test/Pages/By Category/by_category.dart';
+import 'package:navigation_test/Pages/Home/home_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -15,10 +13,8 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => const MyHomePage(),
-      '/page1': (context) => const Page1(),
-      '/page2': (context) => const Page2(),
-      '/user_profile': (context) => const UserProfile(),
       '/show_category': (context) => const ShowCategory(),
+      '/show_product': (context) => Product(),
     },
     title: 'Flutter Demo',
   ));
