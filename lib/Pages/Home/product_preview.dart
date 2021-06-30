@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_test/Pages/Product/product_page.dart';
 
 class ProductPreview extends StatelessWidget {
   String title, category, imageURI;
@@ -12,7 +13,9 @@ class ProductPreview extends StatelessWidget {
       color: Colors.white,
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/show_category', arguments: title);
+          Navigator.pushNamed(context, '/show_product',
+              arguments: ProductWithArguments(
+                  title, category, price.toString(), 'description', imageURI));
         },
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -74,7 +77,9 @@ class ProductPreview2 extends StatelessWidget {
       color: Colors.white,
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/show_category', arguments: title);
+          Navigator.pushNamed(context, '/show_product',
+              arguments: ProductWithArguments(
+                  title, category, price.toString(), 'description', imageURI));
         },
         child: Container(
           width: MediaQuery.of(context).size.width * 0.45,

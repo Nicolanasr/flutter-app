@@ -134,11 +134,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         color: Colors.white,
         padding: const EdgeInsets.all(1),
         child: Column(children: [
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/show_product');
-              },
-              child: Text('roduct page')),
           SizedBox(
             height: 180,
             child: PageView(
