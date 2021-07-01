@@ -14,7 +14,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => const MyHomePage(),
-      '/show_category': (context) => const ShowCategory(),
+      '/show_category': (context) => ShowCategory(),
       '/show_product': (context) => Product(),
     },
     title: 'Flutter Demo',

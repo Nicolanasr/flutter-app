@@ -34,10 +34,15 @@ class ProductDetails extends StatelessWidget {
                   height: 400,
                   child: Center(
                       child: Text(
-                          'Something went wrong while loading the image check your internet connection and try again!'))),
+                          'Something went wrong check your internet connection and try again!'))),
             ),
           ),
-          Text(category, style: TextStyle(color: Colors.grey[500])),
+          GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/show_category',
+                    arguments: category);
+              },
+              child: Text(category, style: TextStyle(color: Colors.grey[500]))),
           const SizedBox(
             height: 5,
           ),

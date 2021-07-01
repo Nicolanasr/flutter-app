@@ -79,11 +79,11 @@ class _ProductState extends State<Product> with TickerProviderStateMixin {
             },
             body: TabBarView(
               controller: _tabController,
-              children: const [
-                ShippingTab(),
-                ReviewsTab(),
+              children: [
+                const ShippingTab(),
+                const ReviewsTab(),
                 VenderInfoTab(),
-                MoreProductsTab()
+                const MoreProductsTab()
               ],
             ),
           ),

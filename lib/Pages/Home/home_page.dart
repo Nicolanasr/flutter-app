@@ -185,7 +185,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               scrollDirection: Axis.horizontal,
               children: [
                 ProductPreview("Refrigerator", "Home appliance", 1000.00,
-                    './asset/Smart-wifi-fridge-preview.jpeg'),
+                    'https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_300/https://urbeys.com/wp-content/uploads/2020/08/D389371F-4864-46E8-9FB7-206D177194C2-300x300.jpeg'),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -199,7 +199,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   ],
                 ),
                 ProductPreview("Smart tv", "Home appliance", 1000.00,
-                    './asset/roku-tv-preview.jpeg'),
+                    'https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_300/https://urbeys.com/wp-content/uploads/2020/08/CAF21FA4-1B8D-4C19-A69C-9C7097810A4F-300x300.jpeg'),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -212,8 +212,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     )
                   ],
                 ),
-                ProductPreview("Refrigerator", "Home appliance", 1000.00,
-                    './asset/Smart-wifi-fridge-preview.jpeg'),
+                ProductPreview("Rc Buggy", "Toys and games", 46.00,
+                    'https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_300/https://urbeys.com/wp-content/uploads/2020/07/5B62D6A0-0761-4DFD-898A-F73DC65CFE8A-300x300.jpeg'),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -226,8 +226,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     )
                   ],
                 ),
-                ProductPreview("Smart tv", "Home appliance", 1000.00,
-                    './asset/roku-tv-preview.jpeg'),
+                ProductPreview(
+                    "Barby Friend House Set",
+                    "Toys and games",
+                    33.00,
+                    'https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_300/https://urbeys.com/wp-content/uploads/2020/07/5097E01C-CBF1-45B7-B7A4-00464E9495B5-300x300.jpeg'),
               ],
             ),
           ),
@@ -267,7 +270,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   IntrinsicHeight(
                     child: Row(
                       children: [
-                        ProductPreview2(
+                        ProductPreview(
                             "Samsung Galaxy A107 32GB Memory ,2GB Ram , 6.2 Inch , Octa Core , 13 Mp Camera, Red",
                             "Samsung",
                             130.00,
@@ -278,7 +281,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             width: 5,
                           ),
                         ),
-                        ProductPreview2(
+                        ProductPreview(
                             "Samsung Galaxy A20S 32GB Memory ,3Gb Ram, 1.8 GHZ Octa Core, 8MP Cam,Micro SD Up to 512 GB Blue",
                             "Samsung",
                             170.00,
@@ -292,7 +295,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   IntrinsicHeight(
                     child: Row(
                       children: [
-                        ProductPreview2(
+                        ProductPreview(
                             "Apple, Iphone 8 – 128 GB",
                             "iPhone",
                             650.00,
@@ -303,7 +306,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             width: 5,
                           ),
                         ),
-                        ProductPreview2(
+                        ProductPreview(
                             "Apple, Iphone X – 64 GB",
                             "iPhone",
                             900.00,
@@ -317,7 +320,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   IntrinsicHeight(
                     child: Row(
                       children: [
-                        ProductPreview2(
+                        ProductPreview(
                             "Apple, Iphone X – 64 GB",
                             "Huawei",
                             120.00,
@@ -328,7 +331,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             width: 5,
                           ),
                         ),
-                        ProductPreview2(
+                        ProductPreview(
                             "AirPods without Wireless Charging Case",
                             "Samsung",
                             140.00,
@@ -381,10 +384,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: IntrinsicHeight(
               child: Row(children: [
-                ProductPreview2(
-                    '2 In 1 Correcting Eye Cream',
-                    'Eye Care',
-                    19.00,
+                ProductPreview('2 In 1 Correcting Eye Cream', 'Eye Care', 19.00,
                     'https://urbeys.com/wp-content/uploads/2020/07/8081_v4-300x300.jpeg'),
                 const SizedBox(
                   height: 160,
@@ -392,10 +392,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     width: 5,
                   ),
                 ),
-                ProductPreview2(
-                    '2 In 1 Correcting Eye Cream',
-                    'Eye Care',
-                    19.00,
+                ProductPreview('2 In 1 Correcting Eye Cream', 'Eye Care', 19.00,
                     'https://urbeys.com/wp-content/uploads/2020/07/8081_v4-300x300.jpeg'),
               ]),
             ),
@@ -424,7 +421,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: IntrinsicHeight(
               child: Row(children: [
-                ProductPreview2(
+                ProductPreview(
                     'Smart wifi refrigerator',
                     'Home Appliances',
                     19.00,
@@ -435,7 +432,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     width: 5,
                   ),
                 ),
-                ProductPreview2('4k Roku TV', 'Home Appliances', 19.00,
+                ProductPreview('4k Roku TV', 'Home Appliances', 19.00,
                     'https://urbeys.com/wp-content/uploads/2020/08/CAF21FA4-1B8D-4C19-A69C-9C7097810A4F-300x300.jpeg'),
               ]),
             ),
@@ -456,7 +453,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   IntrinsicHeight(
                     child: Row(
                       children: [
-                        ProductPreview2("Sabuna", "Soap", 1.00,
+                        ProductPreview("Sabuna", "Soap", 1.00,
                             'https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_300,h_300/https://urbeys.com/wp-content/uploads/2020/07/sabunav2-300x300.jpg'),
                         const SizedBox(
                           height: 160,
@@ -464,7 +461,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             width: 5,
                           ),
                         ),
-                        ProductPreview2(
+                        ProductPreview(
                             "Agriya Natural Three Berry Jam(370 g)",
                             "Jam",
                             12.00,
@@ -478,7 +475,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   IntrinsicHeight(
                     child: Row(
                       children: [
-                        ProductPreview2(
+                        ProductPreview(
                             "Agriya Natural StrawBerry Jam(370 g)",
                             "Jam",
                             12.00,
@@ -489,7 +486,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             width: 5,
                           ),
                         ),
-                        ProductPreview2(
+                        ProductPreview(
                             "Agriya Natural Apricor jam(370 g)",
                             "Jam",
                             12.00,
@@ -503,7 +500,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   IntrinsicHeight(
                     child: Row(
                       children: [
-                        ProductPreview2(
+                        ProductPreview(
                             "Agrya Olive Oil Soap (Original)",
                             "Soap",
                             12.00,
@@ -514,7 +511,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             width: 5,
                           ),
                         ),
-                        ProductPreview2(
+                        ProductPreview(
                             "Agrya Olive Oil Soap (Bay leaves)",
                             "Soap",
                             9.00,

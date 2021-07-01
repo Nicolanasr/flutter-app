@@ -5,6 +5,14 @@ import 'package:navigation_test/Pages/Product/Tabs/Review%20Tab/star_display.dar
 import 'package:navigation_test/Pages/Product/Tabs/Review%20Tab/star_rating.dart';
 
 class ReviewsTab extends StatefulWidget {
+  final int reviewCount = 0,
+      fiveStars = 0,
+      fourStars = 0,
+      threeStars = 0,
+      twoStars = 0,
+      oneStar = 0;
+  final double overallRating = 0.0;
+
   const ReviewsTab({Key? key}) : super(key: key);
 
   @override
@@ -12,9 +20,6 @@ class ReviewsTab extends StatefulWidget {
 }
 
 class _ReviewsTabState extends State<ReviewsTab> {
-  int reviewCount = 0;
-  double overallRating = 0.0;
-
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
@@ -29,7 +34,7 @@ class _ReviewsTabState extends State<ReviewsTab> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    "Based on $reviewCount reviews",
+                    "Based on ${widget.reviewCount.toString()} reviews",
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(
@@ -38,7 +43,7 @@ class _ReviewsTabState extends State<ReviewsTab> {
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(overallRating.toString(),
+                        Text(widget.overallRating.toString(),
                             style: const TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold)),
                         const Text('Overall')
@@ -52,7 +57,7 @@ class _ReviewsTabState extends State<ReviewsTab> {
                       width: 10,
                     ),
                     Text(
-                      "0",
+                      widget.fiveStars.toString(),
                       style: TextStyle(color: Colors.grey[700]),
                     )
                   ]),
@@ -62,7 +67,7 @@ class _ReviewsTabState extends State<ReviewsTab> {
                       width: 10,
                     ),
                     Text(
-                      "0",
+                      widget.fourStars.toString(),
                       style: TextStyle(color: Colors.grey[700]),
                     )
                   ]),
@@ -72,7 +77,7 @@ class _ReviewsTabState extends State<ReviewsTab> {
                       width: 10,
                     ),
                     Text(
-                      "0",
+                      widget.threeStars.toString(),
                       style: TextStyle(color: Colors.grey[700]),
                     )
                   ]),
@@ -82,7 +87,7 @@ class _ReviewsTabState extends State<ReviewsTab> {
                       width: 10,
                     ),
                     Text(
-                      "0",
+                      widget.twoStars.toString(),
                       style: TextStyle(color: Colors.grey[700]),
                     )
                   ]),
@@ -92,12 +97,12 @@ class _ReviewsTabState extends State<ReviewsTab> {
                       width: 10,
                     ),
                     Text(
-                      "0",
+                      widget.oneStar.toString(),
                       style: TextStyle(color: Colors.grey[700]),
                     )
                   ]),
                   const SizedBox(height: 20),
-                  reviewCount == 0
+                  widget.reviewCount == 0
                       ? const Text(
                           "Be the first to review this product",
                           style: TextStyle(fontSize: 18),
@@ -106,7 +111,7 @@ class _ReviewsTabState extends State<ReviewsTab> {
                   const SizedBox(height: 20),
                   ReviewForm(),
                   const SizedBox(height: 20),
-                  reviewCount == 0
+                  widget.reviewCount == 0
                       ? const Text(
                           "There are no reviews yet",
                           style: TextStyle(fontSize: 18),
