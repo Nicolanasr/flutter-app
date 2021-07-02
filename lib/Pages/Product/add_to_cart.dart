@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../app_bar.dart';
+
 class AddToCart extends StatelessWidget {
   String price;
-  AddToCart(this.price);
+  GlobalKey<AppBarModState> keyForBar;
+
+  AddToCart(this.price, this.keyForBar);
 
   TextEditingController quantityController = TextEditingController()
     ..text = '1';
@@ -52,6 +56,7 @@ class AddToCart extends StatelessWidget {
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Added Item to cart')));
+                keyForBar.currentState!.increaseCount();
               },
               child: Row(children: const [
                 Icon(Icons.add_shopping_cart_sharp),

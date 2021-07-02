@@ -51,14 +51,17 @@ class _ProductState extends State<Product> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as ProductWithArguments;
+    GlobalKey<AppBarModState> myKey = GlobalKey();
     return GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
           TextEditingController().clear();
         },
         child: Scaffold(
-          bottomSheet: AddToCart(args.price),
-          appBar: const AppBarMod(),
+          bottomSheet: AddToCart(args.price, myKey),
+          appBar: AppBarMod(
+            key: myKey,
+          ),
           body: NestedScrollView(
             headerSliverBuilder: (context, value) {
               return [

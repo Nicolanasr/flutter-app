@@ -40,7 +40,7 @@ class _ShowCategoryState extends State<ShowCategory> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
-      appBar: const AppBarMod(),
+      appBar: AppBarMod(),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.white,

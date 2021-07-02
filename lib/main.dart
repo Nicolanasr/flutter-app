@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:navigation_test/Pages/My%20Cart/my_cart_page.dart';
 import 'package:navigation_test/Pages/Product/product_page.dart';
 
 import './sidebar.dart';
@@ -16,6 +17,7 @@ void main() {
       '/': (context) => const MyHomePage(),
       '/show_category': (context) => ShowCategory(),
       '/show_product': (context) => Product(),
+      '/my_cart': (context) => MyCart(),
     },
     title: 'Flutter Demo',
   ));
@@ -65,13 +67,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return _isLoading
-        ? SpinKitDoubleBounce(
+        ? const SpinKitDoubleBounce(
             color: Colors.blue,
             size: 50.0,
           )
         : Scaffold(
             drawer: const SideBar(),
-            appBar: const AppBarMod(),
+            appBar: AppBarMod(),
             bottomNavigationBar: BottomNavigationBar(
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(

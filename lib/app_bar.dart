@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_test/main.dart';
+import 'package:badges/badges.dart';
 
 var recent = [];
+int cartCount = 0;
 
 class AppBarMod extends StatefulWidget implements PreferredSizeWidget {
-  const AppBarMod({Key? key})
+  AppBarMod({Key? key})
       : preferredSize = const Size.fromHeight(kToolbarHeight),
         super(key: key);
+
   @override
   final Size preferredSize; // default is 56.0
   @override
-  _AppBarModState createState() => _AppBarModState();
+  AppBarModState createState() => AppBarModState();
 }
 
-class _AppBarModState extends State<AppBarMod> {
+class AppBarModState extends State<AppBarMod> {
+  void increaseCount() {
+    setState(() {
+      cartCount += 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,12 +54,25 @@ class _AppBarModState extends State<AppBarMod> {
             ),
             onPressed: () {},
           ),
-          IconButton(
-            icon: const Icon(
-              Icons.shopping_cart_outlined,
-              color: Colors.white,
+          Badge(
+            position: const BadgePosition(top: 5, end: 5),
+            badgeColor: Color(Colors.lightBlue[900]!.value),
+            badgeContent: Padding(
+              padding: EdgeInsets.all(1),
+              child: Text(cartCount.toString(),
+                  style: const TextStyle(fontSize: 11, color: Colors.white)),
             ),
-            onPressed: () {},
+            child: IconButton(
+              icon: const Icon(
+                Icons.shopping_cart_outlined,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                if (ModalRoute.of(context)!.settings.name != '/my_cart') {
+                  Navigator.pushNamed(context, '/my_cart');
+                }
+              },
+            ),
           ),
         ],
       ),
