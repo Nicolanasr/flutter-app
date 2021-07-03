@@ -39,6 +39,7 @@ class AppBarModState extends State<AppBarMod> {
         ),
         actions: <Widget>[
           IconButton(
+            tooltip: 'Search',
             icon: const Icon(
               Icons.search,
               color: Colors.white,
@@ -48,11 +49,17 @@ class AppBarModState extends State<AppBarMod> {
             },
           ),
           IconButton(
+            tooltip: 'Account',
             icon: const Icon(
               Icons.account_circle_outlined,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              if (ModalRoute.of(context)!.settings.name != '/login' &&
+                  ModalRoute.of(context)!.settings.name != '/register') {
+                Navigator.pushNamed(context, '/login');
+              }
+            },
           ),
           Badge(
             position: const BadgePosition(top: 5, end: 5),
@@ -63,6 +70,7 @@ class AppBarModState extends State<AppBarMod> {
                   style: const TextStyle(fontSize: 11, color: Colors.white)),
             ),
             child: IconButton(
+              tooltip: 'Shopping Cart',
               icon: const Icon(
                 Icons.shopping_cart_outlined,
                 color: Colors.white,

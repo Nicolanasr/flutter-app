@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:navigation_test/Pages/Authentication/login.dart';
+import 'package:navigation_test/Pages/Authentication/register.dart';
 import 'package:navigation_test/Pages/My%20Cart/my_cart_page.dart';
 import 'package:navigation_test/Pages/Product/product_page.dart';
 
@@ -18,6 +20,8 @@ void main() {
       '/show_category': (context) => ShowCategory(),
       '/show_product': (context) => Product(),
       '/my_cart': (context) => MyCart(),
+      '/login': (context) => LoginPage(),
+      '/register': (context) => RegisterPage(),
     },
     title: 'Flutter Demo',
   ));
